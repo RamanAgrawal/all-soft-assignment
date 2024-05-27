@@ -1,7 +1,12 @@
 import React, { useState, useRef } from "react";
 import { generateOTP, validateOTP } from "../services/services";
-import { setAuthToken } from "../services/Api";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+
+/**
+ * Login component
+ * @returns JSX.Element
+ */
 
 const Login: React.FC = () => {
   const [mobile, setMobile] = useState<string>("");
@@ -9,6 +14,7 @@ const Login: React.FC = () => {
   const [isOtpSent, setIsOtpSent] = useState<boolean>(false);
   const otpInputs = useRef<(HTMLInputElement | null)[]>([]);
   const navigate = useNavigate();
+  const {setUserdata}=useUser()
   const sendOtp = async () => {
     try {
       await generateOTP(mobile);
@@ -22,8 +28,10 @@ const Login: React.FC = () => {
     try {
       const otpCode = otp.join("");
       const response = await validateOTP(mobile, otpCode);
-      setAuthToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
+      console.log(response.data.data);
+      
+      localStorage.setItem("data", JSON.stringify(response.data.data));
+      setUserdata(response.data.data)
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -77,7 +85,7 @@ const Login: React.FC = () => {
       </form>
 
       <button
-        className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        className="bg-teal-500 mt-4 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
         onClick={sendOtp}
       >{
         isOtpSent ? "Resend OTP" : "Send OTP"
