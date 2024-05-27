@@ -34,6 +34,7 @@ const FileSearch: React.FC<FileSearchProps> = ({ onCancel }) => {
   const [tags, setTags] = useState<string[]>([]);
   const [newTag, setNewTag] = useState<string>("");
   const [documents, setDocuments] = useState<any[]>([]);
+    const [showForm, setShowForm] = useState<boolean>(true);
   const { userdata } = useUser();
 
   const handleCancel = () => {
@@ -96,7 +97,8 @@ const FileSearch: React.FC<FileSearchProps> = ({ onCancel }) => {
         console.log(response);
 
         setDocuments(response.data.data);
-        handleCancel();
+        // handleCancel();
+        setShowForm(false);
         // Handle search results
       } catch (error) {
         console.error(error);
@@ -107,7 +109,7 @@ const FileSearch: React.FC<FileSearchProps> = ({ onCancel }) => {
   return (
     <div className="max-w-lg mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Search Files</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    {showForm && <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block mb-1 text-gray-200 text-left">
             From Date:
@@ -213,7 +215,7 @@ const FileSearch: React.FC<FileSearchProps> = ({ onCancel }) => {
             Cancel
           </button>
         </div>
-      </form>
+      </form>}
       <div className="mt-6">
         <h3 className="text-xl font-semibold mb-2">Results:</h3>
         <ul>
