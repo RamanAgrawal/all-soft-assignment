@@ -6,7 +6,10 @@ interface OTPRequest {
 
 interface OTPResponse {
   data: {
-    token: string;
+    data: {
+      token: string;
+      user_id: string;
+    };
   };
 }
 
@@ -53,15 +56,14 @@ export const uploadFile = (data: UploadData, token: string) => {
 
   return api.post("/saveDocumentEntry", formData, {
     headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data",
+      token: token,
     },
   });
 };
 
 export const searchDocuments = (searchParams: SearchParams, token: string) => {
   return api.post("/searchDocumentEntry", searchParams, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { token: token },
   });
 };
 
@@ -73,22 +75,4 @@ export const fetchDocumentTags = (token: string) => {
       headers: { Authorization: `Bearer ${token}` },
     }
   );
-};
-export const fetchDocuments = () => {
-  return api.get("/documents");
-};
-
-export const deleteDocument = (documentId: string) => {
-  return api.delete(`/documents/${documentId}`);
-};
-
-export const fetchUsers = () => {
-  return api.get("/users");
-};
-
-export const deleteUser = (userId: string) => {
-  return api.delete(`/users/${userId}`);
-};
-export const createUser = (user: { username: string; password: string }) => {
-  return api.post("/users", user);
 };
