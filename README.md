@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+# AllSoft assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## clone repo
+install dependencies - yarn install
 
-Currently, two official plugins are available:
+start server - yarn dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Some Screen Shorts
 
-- Configure the top-level `parserOptions` property like this:
+## Login
+/login route
+![image](https://github.com/RamanAgrawal/all-soft-assignment/assets/121716092/a19b8727-97dd-4186-b9f9-6fce30e5c95a)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## FileUplaod comp
+![image](https://github.com/RamanAgrawal/all-soft-assignment/assets/121716092/51b20a0b-2a23-454e-a999-0237e4d3dbbe)
+
+## Filesearch Comp
+
+![image](https://github.com/RamanAgrawal/all-soft-assignment/assets/121716092/0f473b70-f6d7-46f2-ac6e-ad9791cd92a0)
+
+## result
+
+![image](https://github.com/RamanAgrawal/all-soft-assignment/assets/121716092/9aec8c2d-a446-4ed3-97ff-c23f84c8204f)
+
+
+## Admin
+/admin route
+
+![image](https://github.com/RamanAgrawal/all-soft-assignment/assets/121716092/ba6779cd-c93a-479c-bcd2-154d5dadf0d4)
+
